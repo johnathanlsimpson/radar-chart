@@ -4,53 +4,58 @@
 		
 		<div class="radar__behind"></div>
 		
-		<li class="radar__branch">
-			<span class="radar__label">Looks</span>
-			<ul class="radar__options">
-				<li class="radar__option"><a href="">4</a></li>
-				<li class="radar__option"><a href="">3</a></li>
-				<li class="radar__option"><a href="">2</a></li>
-				<li class="radar__option"><a href="">1</a></li>
-			</ul>
-		</li>
-		
-		<li class="radar__branch">
+		<li class="radar__branch" data-average="50" data-ratings="1">
 			<span class="radar__label">Unique</span>
 			<ul class="radar__options">
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="1" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="2" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="3" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="4" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="5" href=""></a></li>
 			</ul>
 		</li>
 		
-		<li class="radar__branch">
+		<li class="radar__branch" data-average="100" data-ratings="1">
 			<span class="radar__label">Charisma</span>
 			<ul class="radar__options">
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="1" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="2" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="3" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="4" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="5" href=""></a></li>
 			</ul>
 		</li>
 		
-		<li class="radar__branch">
+		<li class="radar__branch" data-average="70" data-ratings="1">
 			<span class="radar__label">Catchy</span>
 			<ul class="radar__options">
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="1" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="2" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="3" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="4" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="5" href=""></a></li>
 			</ul>
 		</li>
 		
-		<li class="radar__branch">
+		<li class="radar__branch" data-average="80" data-ratings="1">
 			<span class="radar__label">Technique</span>
 			<ul class="radar__options">
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
-				<li class="radar__option"><a href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="1" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="2" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="3" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="4" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="5" href=""></a></li>
+			</ul>
+		</li>
+		
+		<li class="radar__branch" data-average="20" data-ratings="1">
+			<span class="radar__label">Looks</span>
+			<ul class="radar__options">
+				<li class="radar__option"><a class="radar__link" data-score="1" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="2" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="3" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="4" href=""></a></li>
+				<li class="radar__option"><a class="radar__link" data-score="5" href=""></a></li>
 			</ul>
 		</li>
 		
@@ -59,6 +64,10 @@
 </div>
 
 <style>
+	* {
+		position: relative;
+		box-sizing: border-box;
+	}
 	body {
 		margin-top: 100px;
 	}
@@ -76,24 +85,35 @@
 		width: 20rem;
 	}
 	
-	.radar__behind {
-		background: rgba(255,0,0, 0.1);
+	.radar__behind, .radar__after {
+		background: rgba(255,0,0, 0.05);
 		bottom: 0;
+		clip-path: polygon(0 0);
 		content: "";
 		display: block;
 		left: 0;
+		pointer-events: none;
 		position: absolute;
 		right: 0;
 		top: 0;
 	}
 	
 	.radar__branch {
-		background: rgba(0,255,0, 0.1);
-		border: 1px solid green;
+		background-image:
+			linear-gradient(to bottom, transparent 1px, #666 2px, transparent 0),
+			linear-gradient(#ddd, #ddd);
+		background-position:
+			top center,
+			top center;
+		background-repeat:
+			repeat-y,
+			no-repeat;
+		background-size:
+			10px 20%,
+			1px 100%;
 		bottom: 50%;
 		display: block;
 		left: calc(50% - 1rem);
-		padding-bottom: 2rem;
 		position: absolute;
 		top: 0;
 		transform-origin: center bottom;
@@ -113,11 +133,28 @@
 	}
 	
 	.radar__label {
+		line-height: 1em;
 		position: absolute;
+		top: -1em;
+		transform-origin: bottom left;
+	}
+	.radar__branch:nth-of-type(1) .radar__label {
+		transform: rotate( calc(360deg / 5 * 1 * -1) ) translate(0%, 0em);
+	}
+	.radar__branch:nth-of-type(2) .radar__label {
+		transform: rotate( calc(360deg / 5 * 2 * -1) ) translate(-50%, 1em);
+	}
+	.radar__branch:nth-of-type(3) .radar__label {
+		transform: rotate( calc(360deg / 5 * 3 * -1) ) translate(-50%, 1em);
+	}
+	.radar__branch:nth-of-type(4) .radar__label {
+		transform: rotate( calc(360deg / 5 * 4 * -1) ) translate(-100%, 0em);
+	}
+	.radar__branch:nth-of-type(5) .radar__label {
+		transform: translate(-50%);
 	}
 	
 	.radar__options {
-		border: 1px solid red;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -127,16 +164,28 @@
 		padding: 0;
 	}
 	.radar__option {
-		border: 1px solid yellow;
 		display: block;
+		flex: none;
 		height: 2rem;
 		width: 2rem;
 	}
-	.radar__option:hover {
-		background: yellow;
+	.radar__option:hover, .radar__option:hover ~ .radar__option {
+		background-image: linear-gradient(yellow, yellow);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 5px 100%;
+		opacity: 0.5;
 	}
-	.radar__option:hover ~ .radar__option {
-		background: yellow;
+	
+	.radar__link {
+		border-radius: 50%;
+		display: block;
+		height: 100%;
+		transform: translateY(-50%);
+		width: 100%;
+	}
+	.radar__link:hover {
+		background-image: radial-gradient(circle at center, yellow 10px, transparent 11px);
 	}
 </style>
 
@@ -171,6 +220,18 @@
 		return coords.join(', ');
 	}
 	
-	var radarElem = document.querySelector('.radar__behind');
-	radarElem.style.clipPath = 'polygon(' + getPolygonPath([ 20, 50, 100, 5, 30 ]) + ')';
+	var radarContainer = document.querySelector('.radar__container');
+	
+	var radarAverages = [];
+	
+	var radarBranches = radarContainer.querySelectorAll('.radar__branch');
+	radarBranches.forEach(function(branch, index) {
+		radarAverages.push(branch.dataset.average);
+	});
+	
+	var radarBehind = document.querySelector('.radar__behind');
+	radarBehind.style.clipPath = 'polygon(' + getPolygonPath(radarAverages) + ')';
+	
+	var radarAfter = document.querySelector('.radar__after');
+	radarAfter.style.clipPath = 'polygon(' + getPolygonPath([ 50, 100, 30, 10, 70 ]) + ')';
 </script>
